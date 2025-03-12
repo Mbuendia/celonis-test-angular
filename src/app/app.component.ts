@@ -100,7 +100,9 @@ export class AppComponent implements OnInit {
   }
 
   applyFilter() {
+    this.dataSource.data = this.getData();
     this.dataSource.filter = this.filterValue.trim().toLowerCase();
+    this.dataSource.data = this.dataSource.filteredData;
     this.updateColumnChartsData();
     this.cdr.detectChanges();
   }
@@ -164,8 +166,9 @@ export class AppComponent implements OnInit {
       const counts = countBy(columnData);
       const labels = Object.keys(counts);
       const data = [...Object.values(counts).map(value => Number(value))];
-
+      this.columnChartsData[column] = { labels: [], data: [] };
       this.columnChartsData[column] = { labels, data };
+     
     });
   }
 

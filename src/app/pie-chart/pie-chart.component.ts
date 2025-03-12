@@ -68,7 +68,7 @@ export class PieChartComponent implements OnChanges, AfterViewInit, OnDestroy {
       .innerRadius(0);
 
     this.chartInitialized = true;
-    this.updateChart(); // Dibujar datos iniciales
+    this.updateChart();
   }
 
   private updateChart() {
@@ -105,7 +105,8 @@ export class PieChartComponent implements OnChanges, AfterViewInit, OnDestroy {
       .attr('transform', (d: PieArcDatum<PieChartData>) => `translate(${this.arc.centroid(d)})`)
       .attr('dy', '0.35em')
       .text((d: PieArcDatum<PieChartData>) => d.data.label);
-
+      labels.transition().duration(750);
     labels.exit().remove();
   }
+
 }
