@@ -1,4 +1,4 @@
-import { bootstrapApplication } from '@angular/platform-browser';
+import { bootstrapApplication, provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { importProvidersFrom } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,6 +10,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { provideRouter, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { CommonModule } from '@angular/common';
+
 
 const routes: Routes = [
   // Define your routes here
@@ -18,6 +22,7 @@ const routes: Routes = [
 bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(
+      CommonModule,
       BrowserAnimationsModule,
       MatInputModule,
       MatFormFieldModule,
@@ -25,8 +30,12 @@ bootstrapApplication(AppComponent, {
       MatChipsModule,
       MatDialogModule,
       MatIconModule,
-      FormsModule
+      FormsModule,
+      HttpClientModule,
+      MatExpansionModule,
+      
     ),
-    provideRouter(routes)
+    
+    provideRouter(routes), provideClientHydration(withEventReplay()),
   ]
 }).catch(err => console.error(err));

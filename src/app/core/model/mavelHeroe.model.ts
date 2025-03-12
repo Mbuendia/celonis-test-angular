@@ -1,10 +1,11 @@
 export interface MarvelHeroe {
   id: number;
-  name: string;
-  gender: string;
-  citizenship: string;
-  skill: string;
-  occupation: string;
-  member: string;
-  creator: string;
+  nameLabel: string;
+  genderLabel: string;
+  citizenshipLabel: string;
+  skillsLabel: string;
+  occupationLabel: string;
+  memberOfLabel: string;
+  creatorLabel: string;
+  [key: string]: any;
 }

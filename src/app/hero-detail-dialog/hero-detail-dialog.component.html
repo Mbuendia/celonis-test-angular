@@ -1,12 +1,64 @@
-<h1 mat-dialog-title>{{ data.name }}</h1>
+<h1 mat-dialog-title>{{ 'Edit Hero'}}</h1>
 <div mat-dialog-content>
-  <p><strong>ID:</strong> {{ data.id }}</p>
-  <p><strong>Gender:</strong> {{ data.gender }}</p>
-  <p><strong>Citizenship:</strong> {{ data.citizenship }}</p>
-  <p><strong>Skill:</strong> {{ data.skill }}</p>
-  <p><strong>Occupation:</strong> {{ data.occupation }}</p>
-  <p><strong>Member Of:</strong> {{ data.member }}</p>
+  <form [formGroup]="heroForm">
+    <mat-form-field appearance="fill" class="w-full mb-4">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="nameLabel" placeholder="Name">
+      <mat-error *ngIf="heroForm.get('nameLabel')?.invalid && heroForm.get('nameLabel')?.touched">
+        Name is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full mb-4">
+      <mat-label>Gender</mat-label>
+      <input matInput formControlName="genderLabel" placeholder="Gender">
+      <mat-error *ngIf="heroForm.get('genderLabel')?.invalid && heroForm.get('genderLabel')?.touched">
+        Gender is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full mb-4">
+      <mat-label>Citizenship</mat-label>
+      <input matInput formControlName="citizenshipLabel" placeholder="Citizenship">
+      <mat-error *ngIf="heroForm.get('citizenshipLabel')?.invalid && heroForm.get('citizenshipLabel')?.touched">
+        Citizenship is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full mb-4">
+      <mat-label>Skill</mat-label>
+      <input matInput formControlName="skillsLabel" placeholder="Skill">
+      <mat-error *ngIf="heroForm.get('skillsLabel')?.invalid && heroForm.get('skillsLabel')?.touched">
+        Skill is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full mb-4">
+      <mat-label>Occupation</mat-label>
+      <input matInput formControlName="occupationLabel" placeholder="Occupation">
+      <mat-error *ngIf="heroForm.get('occupationLabel')?.invalid && heroForm.get('occupationLabel')?.touched">
+        Occupation is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full mb-4">
+      <mat-label>Member Of</mat-label>
+      <input matInput formControlName="memberOfLabel" placeholder="Member Of">
+      <mat-error *ngIf="heroForm.get('memberOfLabel')?.invalid && heroForm.get('memberOfLabel')?.touched">
+        Member Of is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full mb-4">
+      <mat-label>Creator</mat-label>
+      <input matInput formControlName="creatorLabel" placeholder="Creator">
+      <mat-error *ngIf="heroForm.get('creatorLabel')?.invalid && heroForm.get('creatorLabel')?.touched">
+        Creator is required.
+      </mat-error>
+    </mat-form-field>
+  </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="heroForm.value" [disabled]="heroForm.invalid" cdkFocusInitial>Save</button>
 </div>

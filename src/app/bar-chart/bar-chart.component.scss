@@ -1,0 +1,12 @@
+svg {
+    margin: 0 auto;
+  }
+  
+  .bar {
+    fill: steelblue;
+    transition: fill 0.3s ease;
+  }
+  
+  .bar:hover {
+    fill: orange;
+  }
